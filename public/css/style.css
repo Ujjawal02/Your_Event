@@ -1,0 +1,116 @@
+:root {
+    --primary: #4A90E2;
+    --secondary: #50E3C2;
+    --accent: #F5A623;
+    --background: #F9FAFB;
+    --text: #333333;
+    --danger: #E94E77;
+    --success: #27AE60;
+}
+
+body {
+    font-family: "Poppins", sans-serif !important;
+    background-color: var(--background) !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main{
+    flex:1;
+}
+/* NavBar */
+.navbar{
+    background-color: #4A90E2 !important;
+    height: 5rem;
+}
+.navbar .nav-link,
+.nav-brand{
+    color: #fff;
+}
+.navbar .nav-link:hover{
+    color: #50E3C2;
+}
+.fa-ticket{
+    color: #F5A623;
+    font-size: 2rem;
+}
+/* Card Effect */
+.event-link{
+    text-decoration: none;
+}
+.event-card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+.card-body{
+    padding: 0 !important;
+}
+.card-text p{
+    font-weight: 400 !important;
+}
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+/* Footer */
+.f-info-links a{
+    text-decoration: none;
+    color: #222222;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+    color: #222222;
+}
+.f-info-links,
+.f-info-socials,
+.f-info-brand{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 0.7rem;
+}
+.f-info{
+    text-align: center;
+    background-color: #ebebeb;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+/* Show Page Styling */
+.show-card{
+    margin: 1rem !important;
+}
+.i-card{
+    margin: 1rem;
+}
+.i-card img{
+    border-radius: 0.4rem;
+}
+.btn{
+    display: flex !important;
+
+    
+}
+.btn .btn-edit{
+    background-color: #F5A623;
+}
+.btn .btn-delete{
+    background-color: #b12525;
+}
+

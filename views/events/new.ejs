@@ -1,0 +1,61 @@
+<%layout("/layouts/boilerplate")%>
+<body>
+    
+    <div class="row">
+    <div class="col col-8 offset-2">
+        <br>
+        <h3>Create New Event</h3>
+    <form action="/events" method="POST" novalidate class="needs-validation">
+        <br>
+        <div class="mb-3">
+            <label for="title" class="form-label"><i class="fas fa-crown"></i> Title</label>
+            <input type="text" name="event[title]" placeholder="enter title" class="form-control" required>
+            <div class="valid-feedback">Title Looks Good!</div>
+            <div class="invalid-feedback">Please enter valid title</div>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label"><i class="fas fa-align-left"></i> Description</label>
+            <textarea name="event[description]" placeholder="enter description" class="form-control" required></textarea>
+            <div class="valid-feedback">Description Looks Good!</div>
+            <div class="invalid-feedback">Please enter valid description</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label"><i class="fas fa-image"></i> Image-Link</label>
+            <input type="text" name="event[image][url]" placeholder="enter image url" class="form-control">
+        </div>
+        
+        <div class="mb-3">
+            <label for="price" class="form-label"><i class="fa-solid fa-tag"></i> Price</label>
+            <input type="text" name="event[price]" placeholder="enter price" class="form-control" required>
+            <div class="valid-feedback">Price Looks Good!</div>
+            <div class="invalid-feedback">Please enter valid price</div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <label for="ticketsAvailable" class="form-label"><i class="fa-solid fa-chair"></i> Tickets-Available</label>
+                <input type="number" name="event[ticketsAvailable]" placeholder="enter no. of tickets available" class="form-control" required>
+                <div class="valid-feedback">Looks Good!</div>
+                <div class="invalid-feedback">Please enter valid ticketsAvailable</div>
+            </div>
+        
+            <div class="mb-3 col-md-8">
+                <label for="venue" class="form-label"><i class="fa-solid fa-location-dot"></i> Venue</label>
+                <input type="text" name="event[venue]" placeholder="enter venue" class="form-control" required>
+                <div class="valid-feedback">Venue Looks Good!</div>
+                <div class="invalid-feedback">Please enter valid venue</div>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="Date" class="form-label"><i class="fa-solid fa-calendar-alt"></i> Date</label>
+            <input type="date" name="event[date]" class="form-control" required>
+            <div class="valid-feedback">Looks Good!</div>
+            <div class="invalid-feedback">Please enter valid date</div>
+        </div>
+        <button class="btn btn-primary">Create</button>
+        <br>
+    </form>
+    </div>
+    </div>
+</body>

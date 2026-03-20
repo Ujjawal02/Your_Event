@@ -1,0 +1,77 @@
+<%layout("/layouts/boilerplate")%>
+<body>
+    <div class="row">
+        <div class="col col-7 offset-2">
+            <br>
+            <p><i class="fas fa-crown"></i><b><%=event.title%></b></p>
+            
+            <div class="card show-card event-card" style="width:45rem">
+                <div class="i-card">
+                    <img src="<%=event.image.url%>" alt="event_Image" style="height: 20rem; width: 40rem;">
+                    <p><b><i class="fa-brands fa-creative-commons-by"></i>Owned by: </b><%=event.owner.username%></p>
+                    <p><b><i class="fas fa-align-left"></i></b><%=event.description%></p>
+                    <p><i class="fa-solid fa-tag"></i><b>Price:</b> &#8377;<%=event.price.toLocaleString("en-IN")%></p>
+                    <p><i class="fa-solid fa-chair"></i><b>Available Tickets:</b> <%=event.ticketsAvailable%></p>
+                    <p><i class="fa-solid fa-location-dot"></i><b>Venue:</b> <%=event.venue%></p>
+                    <p><i class="fa-solid fa-calendar-alt"></i><b>Created Date:</b> <%=event.date%></p>
+                    <button class="btn btn-success">Book</button>
+                </div>
+                
+            </div>
+            <div class="btn offset-0">
+                <form action="/events/<%=event._id%>/edit">
+                <button class="btn btn-primary">Edit</button>
+                </form>
+                &nbsp;&nbsp;&nbsp;
+                <form action="/events/<%=event._id%>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger offset-3">Delete</button>
+                </form>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="row mb-2">
+        <div class="col col-8 offset-2">
+            <p><b>Leave a Reviews</b></p>
+            <form action="/events/<%=event._id%>/reviews" method="POST" novalidate class="needs-validation">
+                <div class="">
+                    <label for="rating" class="form-label">Rating</label>
+                    <input type="range" name="review[rating]"min="1", max="5" id="rating" class="form-range" required>
+                </div>
+                <div class="">
+                    <label for="comment" class="form-label">feedback</label>
+                    <textarea name="review[comment]" id="comment" class="form-control" rows="5" cols="10" required></textarea>
+                    <div class="invalid-feedback">Please leave your feedback</div>
+                    <div class="valid-feedback">Looks Good!</div>
+                </div>
+                <br>
+                <button class="btn btn-dark">Submit</button>
+                <br>
+            </form>
+        </div>
+        <hr>
+        </div>
+        <div class="row">
+            
+        </div>
+        <%if(event.reviews && event.reviews.length > 0){%>
+            <div class="row mb-3">
+                <div class="col col-8 offset-2">
+                    <p><b>All Reviews</b></p>
+                    <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 g-3">
+                    <%for(let review of event.reviews){%>
+                        <div class="col">
+                            <div class="card p-2">
+                                <h6 class="card-title">Joe Bordon</h6>
+                                <p class="card-text"><%=review.comment%>,<%=review.rating%>,stars</p>
+                                <form action="/events/<%=event._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-sm btn-outline-dark">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    <%}%>  
+                    </div> 
+                </div>
+            </div>
+        <%}%>
+</body>

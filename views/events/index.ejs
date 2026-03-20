@@ -1,0 +1,19 @@
+<%layout("/layouts/boilerplate")%>
+<body>
+    <h3>Event Show Page</h3>
+        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1">
+            <%for(let event of allEvents){%>
+            <a href="/events/<%=event.id%>" class="event-link">
+                <div class="card col event-card" style="width: 20rem; padding: 0.1rem;">
+                <img src="<%=event.image.url%>" class="card-img-top" alt="listing_img" style="height: 20rem;">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                    <p class="card-text"><b><%=event.title%></b> <br>
+                    &#8377; <%=event.price.toLocaleString("en-IN")%>
+                </p>
+                </div>
+            </div>
+            </a>
+        <%}%>
+        </div>
+</body>
