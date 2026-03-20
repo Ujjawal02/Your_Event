@@ -1,8 +1,0 @@
-node_modules/
-.app.js
-.app2.js
-.app3.js
-routes/event2.js
-routes/review2.js
-routes/user2.js
-.env
