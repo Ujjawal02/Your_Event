@@ -11,7 +11,12 @@ module.exports.renderNewForm = (req, res) =>{
 module.exports.showEvent =async(req, res) =>{
     let {id} = req.params;
     const event = await Event.findById(id)
-    .populate("reviews")
+    .populate({
+        path:"reviews",
+        populate:{
+            path: "author",
+        }
+    })
     .populate("owner");
     if (!event) {
             return res.status(404).send("Event not found"); 
@@ -25,6 +30,7 @@ module.exports.createEvent = async(req, res) =>{
     }    
     let event = req.body.event;
     const newEvent = new Event(event);
+    newEvent.owner = req.user._id;
     await newEvent.save();
     req.flash("success", "Event created successfully!");
     res.redirect("/events");
