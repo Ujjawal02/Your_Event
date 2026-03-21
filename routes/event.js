@@ -6,7 +6,10 @@ const ExpressError = require("../utils/ExpressError.js");
 const Event = require("../models/event.js");
 const { isLoggedIn, isOwner, validateEvent } = require("../middleware.js");
 const eventController = require("../controllers/event.js");
+const multer = require("multer");
+const {storage, cloudinary} = require("../cloudConfig.js")
 
+const upload = multer({ storage});
 
 
 //index route
@@ -25,11 +28,17 @@ router.get("/:id",
     wrapAsync(eventController.showEvent)
 );
 
-//create route
+// create route
 router.post("/", 
     validateEvent,
+    upload.single('event[image]'),
     wrapAsync(eventController.createEvent)
 );
+// router.post("/", 
+//     upload.single('event[image]'),(req, res)=>{
+//         res.send(req.file);
+//     }
+// );
 
 //edit route
 router.get("/:id/edit", 

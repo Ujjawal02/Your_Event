@@ -25,12 +25,15 @@ module.exports.showEvent =async(req, res) =>{
 }
 
 module.exports.createEvent = async(req, res) =>{
+    let url = req.file.path;
+    let filename = req.file.filename;
     if (!req.body.event.image || !req.body.event.image.url) {
         delete req.body.event.image;
     }    
     let event = req.body.event;
     const newEvent = new Event(event);
     newEvent.owner = req.user._id;
+    newEvent.image = {url, filename};
     await newEvent.save();
     req.flash("success", "Event created successfully!");
     res.redirect("/events");
