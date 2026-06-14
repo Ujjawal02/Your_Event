@@ -1,0 +1,20 @@
+<%layout('/layouts/boilerplate')%>
+
+
+<div class="row">
+  <div class="col col-8 offset-2">
+<h2 class="mt-5">Payment</h2>
+
+<p>Event: <%= booking.event.title %></p>
+<p>Ticket Type: <%= booking.ticketType %></p>
+<p>Quantity: <%= booking.quantity %></p>
+<p>Total Amount: ₹<%= booking.totalAmount %></p>
+
+<form action="/bookings/<%= booking._id %>/payment" method="POST">
+    <button class="btn btn-success">
+        Pay Now
+    </button>
+</form>
+
+  </div>
+  </div>

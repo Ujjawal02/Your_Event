@@ -64,3 +64,16 @@ module.exports.distroyEvent = async(req, res) =>{
     req.flash("success", "Event deleted!");
     res.redirect("/events");
 }
+
+module.exports.bookEvent = async (req, res)=>{
+
+    const {id} = req.params;
+    const event = await Event.findById(id);
+
+    if(!event){
+        req.flash("error", "Event not found!");
+        return res.redirect("/events");
+    }
+
+    res.render('events/book.ejs', {event});
+}

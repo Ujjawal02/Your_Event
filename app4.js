@@ -13,6 +13,7 @@ const ejsMate = require("ejs-mate");
 const events = require("./routes/event.js");
 const reviews = require("./routes/review.js");
 const users = require("./routes/user.js");
+const bookings = require('./routes/booking.js')
 const session = require("express-session");
 const flash = require("connect-flash");
 const ExpressError = require("./utils/ExpressError.js");
@@ -76,6 +77,7 @@ app.use((req, res, next) =>{
 app.use("/events", events);
 app.use("/events/:id/reviews", reviews);
 app.use("/", users);
+app.use('/bookings', bookings);
 
 
 app.use((req, res, next) =>{

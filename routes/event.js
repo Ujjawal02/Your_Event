@@ -10,7 +10,7 @@ const multer = require("multer");
 const {storage, cloudinary} = require("../cloudConfig.js")
 
 const upload = multer({ storage});
-
+const bookingController = require('../controllers/booking.js');
 
 //index route
 router.get("/",
@@ -44,7 +44,6 @@ router.post("/",
 router.get("/:id/edit", 
     isLoggedIn,
     isOwner,
-    validateEvent,
     wrapAsync(eventController.renderEditForm)
 );
 
@@ -61,5 +60,15 @@ router.delete("/:id",
     isOwner,
     wrapAsync(eventController.distroyEvent)
 );
+
+router.get('/:id/book',
+    isLoggedIn,
+    wrapAsync(eventController.bookEvent)
+)
+
+router.post('/:id/book', 
+    isLoggedIn,
+    wrapAsync(bookingController.createBooking)
+)
 
 module.exports = router;

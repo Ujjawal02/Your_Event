@@ -1,4 +1,4 @@
-<%layout("/layouts/boilerplate")%>
+<%layout('/layouts/boilerplate')%>
 <body>
     <div class="row">
         <div class="col col-7 offset-2">
@@ -14,7 +14,9 @@
                     <p><i class="fa-solid fa-chair"></i><b>Available Tickets:</b> <%=event.ticketsAvailable%></p>
                     <p><i class="fa-solid fa-location-dot"></i><b>Venue:</b> <%=event.venue%></p>
                     <p><i class="fa-solid fa-calendar-alt"></i><b>Created Date:</b> <%=event.date%></p>
-                    <button class="btn btn-success">Book</button>
+                    <form action="/events/<%=event._id%>/book">
+                        <button class="btn btn-success">Book</button>
+                    </form>
                 </div>
                 
             </div>

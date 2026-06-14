@@ -1,0 +1,18 @@
+<%layout('/layouts/boilerplate')%>
+
+
+<div class="row">
+  <div class="col col-8 offset-2 mt-5">
+    <h2>Booking Confirmed 🎉</h2>
+
+    <p>Booking ID: <%= booking._id %></p>
+    <p>Event: <%= booking.event.title %></p>
+    <p>Name: <%= booking.fullName %></p>
+    <p>Tickets: <%= booking.quantity %></p>
+    <p>Type: <%= booking.ticketType %></p>
+    <p>Total Amount: ₹<%= booking.totalAmount %></p>
+    <p>Status: <%= booking.bookingStatus %></p>
+    <button class="btn btn-success mb-2">Download invoice</button>
+    <a href="/events">see more events</a>
+  </div>
+</div>    
